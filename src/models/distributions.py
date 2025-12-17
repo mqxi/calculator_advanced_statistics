@@ -26,7 +26,14 @@ class NormalDistribution(DistributionModel):
         ]
 
     def get_formula_latex(self) -> str:
-        return r"f(x) = " + sp.latex(self.expr)
+        return r"f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}"
+
+    def get_info_text(self) -> str:
+        return (
+            "Die Normalverteilung (Gauß-Verteilung) ist definiert für alle reellen Zahlen x (-∞ < x < ∞).\n"
+            "• μ (Mittelwert): Bestimmt die Lage des Maximums.\n"
+            "• σ (Standardabweichung): Bestimmt die Breite der Kurve. Muss > 0 sein."
+        )
 
     def calculate(self, x: float, mu: float, sigma: float) -> CalculationResult:
         """

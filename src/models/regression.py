@@ -49,8 +49,18 @@ class PolynomialRegression(StatisticalModel):
         ]
 
     def get_formula_latex(self) -> str:
-        # Die Matrix-Formel ist universell, egal welcher Grad!
-        return r"\hat{\beta} = (X^T X)^{-1} X^T y"
+        return r"\hat{y} = \beta_0 + \beta_1 x + \beta_2 x^2 + \dots + \beta_n x^n"
+
+    def get_info_text(self) -> str:
+        return (
+            "Dient zur Modellierung nicht-linearer Zusammenhänge.\n"
+            "• Grad (n): Bestimmt die Komplexität (1=Linear, 2=Quadratisch, ...).\n"
+            "• Ridge-Alpha: Regularisierungsparameter zur Vermeidung von Overfitting (0 = OLS/Standard).\n\n"
+            "Die Koeffizienten $\\hat{\\beta}$ werden mittels der Normalengleichung bestimmt:\n"
+            "$\\hat{\\beta} = (X^T X)^{-1} X^T y$\n"
+            "Für Ridge-Regression wird ein Regularisierungsterm hinzugefügt:\n"
+            "$\\hat{\\beta} = (X^T X + \\lambda I)^{-1} X^T y$"
+        )
 
     def _matrix_to_latex(self, mat, max_rows=6, max_cols=6):
         """

@@ -268,6 +268,48 @@ class MainWindow(QMainWindow):
         title.setObjectName("header")
         self.input_layout.addWidget(title)
 
+        # --- INFO AREA (Neu) ---
+        info_frame = QFrame()
+        info_frame.setStyleSheet("""
+            QFrame {
+                background-color: #f1f2f6;
+                border-radius: 6px;
+                padding: 10px;
+                border: 1px solid #dfe6e9;
+            }
+            QLabel {
+                color: #2d3436;
+                font-size: 13px;
+                background: transparent;
+                border: none;
+            }
+        """)
+        info_layout = QVBoxLayout(info_frame)
+        
+        # 1. LaTeX Formel
+        try:
+            latex_code = self.current_model.get_formula_latex()
+            if latex_code:
+                # LatexLabel rendert das Bild
+                latex_lbl = LatexLabel(latex_code, font_size=14)
+                # Zentrieren oder Links
+                info_layout.addWidget(latex_lbl)
+        except Exception as e:
+            print(f"Fehler beim Rendern der LaTeX Formel: {e}")
+
+        # 2. Beschreibungs-Text
+        info_text = self.current_model.get_info_text()
+        if info_text:
+            txt_lbl = QLabel(info_text)
+            txt_lbl.setWordWrap(True)
+            txt_lbl.setStyleSheet("margin-top: 10px; font-style: italic;") 
+            info_layout.addWidget(txt_lbl)
+
+        self.input_layout.addWidget(info_frame)
+        
+        # Kleiner Abstand zum Grid
+        self.input_layout.addSpacing(20)
+
         grid = QGridLayout()
         grid.setVerticalSpacing(20)
         grid.setHorizontalSpacing(30)

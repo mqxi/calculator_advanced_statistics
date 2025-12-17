@@ -58,6 +58,13 @@ class StatisticalModel(ABC):
         """Gibt die allgemeine Formel des Modells als LaTeX-String zurück."""
         pass
 
+    def get_info_text(self) -> str:
+        """
+        Gibt zusätzlichen Text zu Definitionen, Abhängigkeiten und Beschränkungen zurück.
+        Kann Zeilenumbrüche enthalten.
+        """
+        return "Keine weiteren Informationen verfügbar."
+
     @abstractmethod
     def calculate(self, **kwargs) -> CalculationResult:
         """
