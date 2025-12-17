@@ -130,7 +130,15 @@ class BinomialDistribution(DistributionModel):
         ]
 
     def get_formula_latex(self) -> str:
-        return r"P(X=k) = " + sp.latex(self.expr)
+        return r"P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}"
+
+    def get_info_text(self) -> str:
+        return (
+            "Die Binomialverteilung beschreibt die Anzahl der Erfolge in n unabhängigen Bernoulli-Versuchen.\n"
+            "• n (Anzahl Versuche): Natürliche Zahl (n ≥ 0).\n"
+            "• p (Erfolgswahrscheinlichkeit): 0 ≤ p ≤ 1.\n"
+            "• k (Anzahl Erfolge): 0 ≤ k ≤ n."
+        )
 
     def calculate(self, n: int, p: float, k: int) -> CalculationResult:
         # Typkonvertierung sicherstellen
@@ -612,6 +620,13 @@ class BernoulliDistribution(DistributionModel):
 
     def get_formula_latex(self) -> str:
         return r"P(X=k) = p^k (1-p)^{1-k}, \quad k \in \{0, 1\}"
+
+    def get_info_text(self) -> str:
+        return (
+            "Bernoulli-Verteilung: Einfachstes Zufallsexperiment mit zwei Ausgängen (Erfolg/Misserfolg).\n"
+            "• p (Erfolgswahrscheinlichkeit): 0 ≤ p ≤ 1.\n"
+            "• k (Ergebnis): 1 für Erfolg, 0 für Misserfolg."
+        )
 
     def calculate(self, p: float, k: int) -> CalculationResult:
         steps = []

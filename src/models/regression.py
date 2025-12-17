@@ -53,13 +53,15 @@ class PolynomialRegression(StatisticalModel):
 
     def get_info_text(self) -> str:
         return (
-            "Dient zur Modellierung nicht-linearer Zusammenhänge.\n"
-            "• Grad (n): Bestimmt die Komplexität (1=Linear, 2=Quadratisch, ...).\n"
-            "• Ridge-Alpha: Regularisierungsparameter zur Vermeidung von Overfitting (0 = OLS/Standard).\n\n"
-            "Die Koeffizienten $\\hat{\\beta}$ werden mittels der Normalengleichung bestimmt:\n"
-            "$\\hat{\\beta} = (X^T X)^{-1} X^T y$\n"
-            "Für Ridge-Regression wird ein Regularisierungsterm hinzugefügt:\n"
-            "$\\hat{\\beta} = (X^T X + \\lambda I)^{-1} X^T y$"
+            "<html>"
+            "Dient zur Modellierung nicht-linearer Zusammenhänge.<br>"
+            "• <b>Grad (n)</b>: Bestimmt die Komplexität (1=Linear, 2=Quadratisch, ...).<br>"
+            "• <b>Ridge-Alpha</b>: Regularisierungsparameter zur Vermeidung von Overfitting (0 = OLS/Standard).<br><br>"
+            "Die Koeffizienten <i>&beta;&#770;</i> werden mittels der Normalengleichung bestimmt:<br>"
+            "<i>&beta;&#770; = (X<sup>T</sup> X)<sup>-1</sup> X<sup>T</sup> y</i><br>"
+            "Für Ridge-Regression wird ein Regularisierungsterm hinzugefügt:<br>"
+            "<i>&beta;&#770; = (X<sup>T</sup> X + &lambda; I)<sup>-1</sup> X<sup>T</sup> y</i>"
+            "</html>"
         )
 
     def _matrix_to_latex(self, mat, max_rows=6, max_cols=6):
