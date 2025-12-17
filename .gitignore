@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+calculator_advanced_statistics.code-workspace
+
+# Data
+data/*.csv
+data/*.xlsx
+*.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Log
+*.log
